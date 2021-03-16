@@ -34,7 +34,7 @@ class MemoDetailViewController: UIViewController {
 
     @IBAction func modifyBtn(_ sender: Any) {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        formatter.dateFormat = "yyyy-MM-dd"
         let date = formatter.string(from: Date())
 
         try? realm.write {

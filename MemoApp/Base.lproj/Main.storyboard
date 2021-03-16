@@ -15,15 +15,18 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Dl4-Kd-MHq">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <tabBar key="tableFooterView" contentMode="scaleToFill" id="7Oh-Bk-htP">
-                            <rect key="frame" x="0.0" y="111.66666793823242" width="390" height="49"/>
+                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="NEz-pb-Wvg">
+                            <rect key="frame" x="0.0" y="111.66666793823242" width="390" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <items>
-                                <tabBarItem systemItem="favorites" id="cbB-yD-Dja" userLabel="Calendar"/>
-                                <tabBarItem title="OCR" id="V9d-W5-ZC4"/>
+                                <barButtonItem title="Calendar" id="ubI-WO-CVW">
+                                    <connections>
+                                        <action selector="CalendarBtn:" destination="Erj-Pw-gos" id="MoY-QG-tym"/>
+                                        <segue destination="NpA-ES-pak" kind="show" id="Ife-5q-rbr"/>
+                                    </connections>
+                                </barButtonItem>
                             </items>
-                        </tabBar>
+                        </toolbar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="OcA-GS-Bwr" detailTextLabel="KlC-kL-9OD" style="IBUITableViewCellStyleSubtitle" id="XyI-Sh-fxx">
                                 <rect key="frame" x="0.0" y="28" width="390" height="55.666667938232422"/>
@@ -182,6 +185,85 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dOh-kX-9vv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2920" y="159"/>
+        </scene>
+        <!--Calendar View Controller-->
+        <scene sceneID="Kq4-VK-nCo">
+            <objects>
+                <viewController id="NpA-ES-pak" customClass="CalendarViewController" customModule="MemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1qP-9D-JsP" customClass="FSCalendar">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Ldz-AX-7Bo"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="iPa-bQ-Hgx">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="bg2-kV-42V">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="qz4-je-zyn">
+                                <rect key="frame" x="288" y="7" width="86" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add"/>
+                            </button>
+                            <connections>
+                                <action selector="CalendarAdd:" destination="NpA-ES-pak" id="9cO-li-OOC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="calendarView" destination="1qP-9D-JsP" id="Kzj-0I-i8n"/>
+                        <segue destination="b4Z-bE-moE" kind="show" identifier="CalendarMemoSegue" id="0n1-NV-d5Q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lRu-Qh-4g8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1978" y="945"/>
+        </scene>
+        <!--Calendar Memo View Controller-->
+        <scene sceneID="fXe-hw-cPk">
+            <objects>
+                <viewController id="b4Z-bE-moE" customClass="CalendarMemoViewController" customModule="MemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bu5-nL-G7K">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1Z0-W1-TaH">
+                                <rect key="frame" x="0.0" y="130" width="390" height="714"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0eL-OB-ZGR">
+                                <rect key="frame" x="0.0" y="88" width="390" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="CXM-lk-sg2"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <accessibility key="accessibilityConfiguration" identifier="CalendarMemoViewController"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="j9G-p6-wFU">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="nkW-DM-AoG">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="dsV-97-1QY">
+                                <rect key="frame" x="288" y="7" width="86" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="AddBtn:" destination="b4Z-bE-moE" eventType="touchUpInside" id="YRs-ja-gHZ"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="CalendarMemoTextField" destination="0eL-OB-ZGR" id="xY3-Br-CUZ"/>
+                        <outlet property="CalendarMemoTextView" destination="1Z0-W1-TaH" id="a7Y-20-hGt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JzC-c1-weK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-860" y="1420.3791469194312"/>
         </scene>
     </scenes>
     <resources>

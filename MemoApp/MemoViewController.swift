@@ -27,7 +27,7 @@ class MemoViewController: UIViewController {
     
     @IBAction func SaveBtn(_ sender: Any) {
         var formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        formatter.dateFormat = "yyyy-MM-dd"
         var date = formatter.string(from: Date())
         var getData = getNoData()
         

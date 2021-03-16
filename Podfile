@@ -8,5 +8,6 @@ target 'MemoApp' do
   # Pods for MemoApp
 
   pod 'RealmSwift'
+  pod 'FSCalendar'
 
 end
